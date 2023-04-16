@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function App() {
+      const [Minutes, setMinutes] =
+        React.useState(0);
+      // useState는 array를 제공
+      const onChange = (event) => {
+        //console.log(event.target.value); // => document.getElementID().value
+        setMinutes(event.target.value);
+      };
+      const reset = () => {
+        setMinutes(0);
+      };
+      
+      return (
+        <div>
+          <h1 className="hi">Super Converter</h1>
+          <div>
+            <label htmlFor="Minutes">
+              Minutes
+            </label>
+            <input
+              value={Minutes}
+              id="Minutes"
+              placeholder="Minutes"
+              type="number"
+              onChange={onChange}
+            />
+          </div>
+          <h4>You want to convert {Minutes} </h4>
+          <label htmlFor="Hours">Hours</label>
+          <input
+            //value={Minutes/60}
+            value={Math.round(Minutes/60)}
+            id="Hours"
+            placeholder="Hours"
+            type="number"
+          />
+          <button onClick={reset}>Reset</button>
+        </div>
+      );
+    }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
