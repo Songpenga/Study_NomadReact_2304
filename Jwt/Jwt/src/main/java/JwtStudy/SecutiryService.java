@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Service
 public class SecutiryService {
-    private static final String SECTET_KEY = "assdfjflsjfsolfjsjfsopjdfiosjwjafdsaf";
+    private static final String SECTET_KEY = "assdfjflsjfsolfjsjfsopasdadaqweqeadaasdaqweqvjdfiosjwjafdsaf";
 
     public String createToken(String subject, long expTime) {
         if (expTime <= 0) {
@@ -38,7 +38,6 @@ public class SecutiryService {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
-
         return  claims.getSubject();
     }
 }

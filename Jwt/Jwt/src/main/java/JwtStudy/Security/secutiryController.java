@@ -25,7 +25,7 @@ public class secutiryController {
     }
 
     @GetMapping("/get/subject")
-    public Map<String, Object> getSubject(@RequestParam(value = "subject") String token) {
+    public Map<String, Object> getSubject(@RequestParam(value = "token") String token) {
         String subject = secutiryService.getSubject(token);
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("result", subject);
