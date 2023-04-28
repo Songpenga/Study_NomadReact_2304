@@ -1,34 +1,34 @@
-import "./App.css";
 import React, {useState} from "react";
 
 const content = [
   {
-    tab: "Sectoin 1",
-    content: "I'm the content of the Section1",
+    tab: "Section 1",
+    content: "I'm the content of the Section 1",
   },
   {
-    tab: "Sectoin 2",
-    content: "I'm the content of the Section2",
+    tab: "Section 2",
+    content: "I'm the content of the Section 2",
   },
 ];
 
 const useTabs = (initialTab, allTabs) => {
-  if (!allTabs || Array.isArray(allTabs)) {
-    return;
-    //배열이 아닐떄 return
-  }
   const [currentIndex, setCurrentIndex] = useState(initialTab);
+  if (!allTabs || !Array.isArray(allTabs)) {
+    return;
+  }
+
   return {
     currentItem: allTabs[currentIndex],
     changeItem: setCurrentIndex,
   };
 };
 
-function App() {
-  const [currentItem, changeItem] = useTabs(0, content);
+const App = () => {
+  const {currentItem, changeItem} = useTabs(0, content);
+
   return (
     <div className="App">
-      {content.map((section) => (
+      {content.map((section, index) => (
         <button onClick={() => changeItem(index)}>
           {section.tab}
         </button>
@@ -36,6 +36,6 @@ function App() {
       <div>{currentItem.content}</div>
     </div>
   );
-}
+};
 
 export default App;
